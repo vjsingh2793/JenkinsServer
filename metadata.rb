@@ -1,12 +1,14 @@
 name 'JenkinsServer'
-maintainer 'The Authors'
-maintainer_email 'you@example.com'
-license 'All Rights Reserved'
+maintainer 'Vijay Kumar Singh'
+maintainer_email 'vjsingh2793@gmail.com'
+license 'Apache-2.0'
 description 'Installs/Configures JenkinsServer'
-long_description 'Installs/Configures JenkinsServer'
+long_description IO.read(File.join(File.dirname(__FILE__),'README.md'))
+supports Windows
+supports CentOS
 version '0.1.0'
 chef_version '>= 13.0'
-
+depends 'firewall', '> 2.0'
 # The `issues_url` points to the location where issues for this cookbook are
 # tracked.  A `View Issues` link will be displayed on this cookbook's page when
 # uploaded to a Supermarket.
