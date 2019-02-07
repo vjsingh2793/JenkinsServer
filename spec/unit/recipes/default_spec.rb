@@ -18,6 +18,10 @@ describe 'JenkinsServer::default' do
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
+
+    it 'Install Jenkins Server' do
+      expect(chef_run).to start_service('jenkins')
+    end
   end
 
   context 'When all attributes are default, on CentOS 7.4.1708' do
@@ -28,6 +32,23 @@ describe 'JenkinsServer::default' do
       runner.converge(described_recipe)
     end
 
+    it 'converges successfully' do
+      expect { chef_run }.to_not raise_error
+    end
+
+    it 'Install Jenkins Server' do
+      expect(chef_run).to start_service('jenkins')
+    end
+  end
+
+  context 'When all attributes are default, on Windows 2016' do
+    let(:chef_run) do
+      runner=ChefSpec::ServerRunner.new(platform: 'windows', version: '2016')
+      runner.converge(described_recipe)
+    end
+    it 'Install Jenkins Server' do
+      expect(chef_run).to start_service('jenkins')
+    end
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
     end
